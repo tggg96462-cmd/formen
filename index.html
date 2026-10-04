@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Four Man — Термобілизна для екстремальних холодів</title>
+
+    <!-- TikTok Pixel Code Start -->
+    <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+    var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+      ttq.load('DB19MV3C77U04C8M0QI0');
+      ttq.page();
+    }(window, document, 'ttq');
+    </script>
+    <!-- TikTok Pixel Code End -->
+
     <style>
         :root {
             --bg-color: #070b12;
@@ -69,6 +83,24 @@
         .winter-hero p {
             color: var(--text-muted);
             font-size: 14px;
+        }
+
+        .stats-badge {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            background: rgba(16, 22, 34, 0.8);
+            border: 1px solid var(--border-color);
+            padding: 10px 20px;
+            margin: 0 auto 15px;
+            max-width: 450px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .stats-badge span {
+            color: var(--accent-blue);
         }
 
         .promo-banner {
@@ -218,7 +250,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .size-btn {
@@ -236,6 +268,61 @@
             background-color: white;
             color: black;
             border-color: white;
+        }
+
+        .hw-inputs-container {
+            background: #162032;
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: none;
+        }
+        .hw-inputs-container.active {
+            display: block;
+        }
+        .hw-inputs-row {
+            display: flex;
+            gap: 10px;
+        }
+        .hw-inputs-row input {
+            margin-bottom: 0 !important;
+        }
+
+        .reviews-section {
+            margin: 20px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+        }
+        .reviews-title {
+            font-size: 13px;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .review-card {
+            background: #162032;
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .review-stars {
+            color: #ffc107;
+            font-size: 11px;
+        }
+        .review-text {
+            color: var(--text-muted);
+            font-size: 12px;
         }
 
         .price-row {
@@ -327,7 +414,6 @@
             transform: translateY(-1px);
         }
 
-        /* Модальные окна */
         .modal {
             display: none;
             position: fixed;
@@ -337,37 +423,57 @@
             justify-content: center;
             z-index: 1000;
             backdrop-filter: blur(5px);
-            padding: 15px;
+            padding: 10px;
         }
         .modal-content {
             background: var(--card-bg);
-            padding: 25px;
+            padding: 20px;
             border-radius: 14px;
             text-align: center;
-            max-width: 500px;
+            max-width: 650px;
             width: 100%;
             border: 1px solid var(--border-color);
             max-height: 90vh;
             overflow-y: auto;
         }
-        .modal-content h3 { color: #00d2ff; margin-bottom: 15px; font-size: 20px; }
-        .modal-content p { color: var(--text-muted); margin-bottom: 20px; font-size: 14px; }
+        .modal-content h3 { color: #00d2ff; margin-bottom: 12px; font-size: 18px; }
         .modal-btn {
             background: var(--accent-blue); color: black; border: none; padding: 10px 25px;
             font-weight: bold; border-radius: 8px; cursor: pointer; margin-top: 15px;
         }
 
-        /* Таблица размерной сетки */
+        .modal-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        .modal-tab-btn {
+            flex: 1;
+            background: #162032;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .modal-tab-btn.active {
+            background: var(--accent-blue);
+            color: #000;
+            border-color: var(--accent-blue);
+        }
+
         .size-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 12px;
-            margin-bottom: 15px;
+            font-size: 11px;
+            margin-bottom: 10px;
             text-align: center;
         }
         .size-table th, .size-table td {
             border: 1px solid var(--border-color);
-            padding: 6px 4px;
+            padding: 5px 3px;
         }
         .size-table th {
             background-color: #162032;
@@ -389,25 +495,35 @@
         <p>Максимальне збереження тепла в суворих умовах</p>
     </div>
 
+    <div class="stats-badge">
+        <div>📦 <span>1000+</span> виконаних замовлень</div>
+        <div>⭐ Оцінка <span>4.8 / 5.0</span></div>
+    </div>
+
     <div class="promo-banner">
-        ❄️️ СЕЗОННИЙ РОЗПРОДАЖ: ЗАХИСТ ДО -30°C ❄️
+        ❄️ СЕЗОННИЙ РОЗПРОДАЖ: ЗАХИСТ ДО -30°C ❄️
     </div>
 
     <div class="container" id="products-container">
         <!-- Товары генерируются через JS -->
     </div>
 
-    <!-- Модалка размерной сетки -->
     <div class="modal" id="sizeModal">
         <div class="modal-content">
             <h3 id="modalSizeTitle">Розмірна сітка</h3>
-            <div id="modalSizeTableContainer"></div>
-            <p style="font-size: 11px; margin-top: 10px; color: var(--text-muted);">* Допустима похибка у вимірах ±1-2 см. Матеріал еластичний та добре тягнеться.</p>
+            
+            <div class="modal-tabs">
+                <button class="modal-tab-btn active" id="tabBtn1" onclick="switchModalTab('volumes')">За об'ємами</button>
+                <button class="modal-tab-btn" id="tabBtn2" onclick="switchModalTab('heightWeight')">За зростом та вагою</button>
+            </div>
+
+            <div id="modalTableContainer"></div>
+            
+            <p id="modalFooterNote" style="font-size: 11px; margin-top: 10px; color: var(--text-muted);">* Допустима похибка у вимірах ±1-2 см. Матеріал еластичний та добре тягнеться.</p>
             <button class="modal-btn" onclick="closeSizeModal()">Закрити</button>
         </div>
     </div>
 
-    <!-- Модалка успешного заказа -->
     <div class="modal" id="successModal">
         <div class="modal-content">
             <h3>Дякуємо за замовлення!</h3>
@@ -448,49 +564,88 @@
             }
         ];
 
-        const state = {};
-
-        // Данные таблиц размеров (по твоим картинкам)
         const sizeCharts = {
             female: {
-                title: 'Розмірна сітка — Жіноча',
-                headers: ['Розмір', 'Груди, см', 'Талія, см', 'Стегна, см', 'Довж. кофти', 'Довж. штанів'],
-                rows: [
-                    ['XS (42-44)', '82–86', '66–70', '90–94', '60', '92'],
-                    ['S (44-46)', '86–90', '70–74', '94–98', '61', '94'],
-                    ['M (46-48)', '90–94', '74–78', '98–102', '62', '96'],
-                    ['L (48-50)', '94–98', '78–82', '102–106', '63', '98'],
-                    ['XL (50-52)', '98–102', '82–86', '106–110', '64', '100'],
-                    ['2XL (52-54)', '102–106', '86–90', '110–114', '65', '102'],
-                    ['3XL (54-56)', '106–110', '90–94', '114–120', '66', '104'],
-                    ['4XL (56-58)', '110–116', '94–98', '120–126', '67', '106'],
-                    ['5XL (58-60)', '116–122', '98–102', '126–132', '68', '108'],
-                    ['6XL (60-62)', '122–128', '102–106', '132–138', '69', '110']
-                ]
+                title: 'Жіноча розмірна сітка',
+                volumes: {
+                    headers: ['Розмір', 'Груди, см', 'Талія, см', 'Стегна, см', 'Довж. кофти', 'Довж. штанів'],
+                    rows: [
+                        ['XS (42-44)', '82–86', '66–70', '90–94', '60', '92'],
+                        ['S (44-46)', '86–90', '70–74', '94–98', '61', '94'],
+                        ['M (46-48)', '90–94', '74–78', '98–102', '62', '96'],
+                        ['L (48-50)', '94–98', '78–82', '102–106', '63', '98'],
+                        ['XL (50-52)', '98–102', '82–86', '106–110', '64', '100'],
+                        ['2XL (52-54)', '102–106', '86–90', '110–114', '65', '102'],
+                        ['3XL (54-56)', '106–110', '90–94', '114–120', '66', '104'],
+                        ['4XL (56-58)', '110–116', '94–98', '120–126', '67', '106'],
+                        ['5XL (58-60)', '116–122', '98–102', '126–132', '68', '108'],
+                        ['6XL (60-62)', '122–128', '102–106', '132–138', '69', '110']
+                    ]
+                }
             },
             male: {
-                title: 'Розмірна сітка — Чоловіча',
-                headers: ['Розмір', 'Груди, см', 'Талія, см', 'Стегна, см', 'Довж. кофти', 'Довж. штанів'],
-                rows: [
-                    ['S (44-46)', '58–70', '60–70', '70–80', '68', '97'],
-                    ['M (46-48)', '70–78', '70–80', '80–90', '69', '98'],
-                    ['L (48-50)', '88–100', '80–92', '90–98', '70', '100'],
-                    ['XL (50-52)', '100–112', '92–100', '98–106', '71', '101'],
-                    ['2XL (52-54)', '112–120', '100–110', '106–112', '72', '102'],
-                    ['3XL (54-56)', '120–128', '110–120', '112–118', '73', '103'],
-                    ['4XL (56-58)', '128–136', '120–130', '118–124', '74', '104'],
-                    ['5XL (58-60)', '136–144', '130–140', '124–130', '76', '106'],
-                    ['6XL (60-62)', '144–152', '140–150', '130–136', '78', '108']
-                ]
+                title: 'Чоловіча розмірна сітка',
+                volumes: {
+                    headers: ['Розмір', 'Груди, см', 'Талія, см', 'Стегна, см', 'Довж. кофти', 'Довж. штанів'],
+                    rows: [
+                        ['S (44-46)', '58–70', '60–70', '70–80', '68', '97'],
+                        ['M (46-48)', '70–78', '70–80', '80–90', '69', '98'],
+                        ['L (48-50)', '88–100', '80–92', '90–98', '70', '100'],
+                        ['XL (50-52)', '100–112', '92–100', '98–106', '71', '101'],
+                        ['2XL (52-54)', '112–120', '100–110', '106–112', '72', '102'],
+                        ['3XL (54-56)', '120–128', '110–120', '112–118', '73', '103'],
+                        ['4XL (56-58)', '128–136', '120–130', '118–124', '74', '104'],
+                        ['5XL (58-60)', '136–144', '130–140', '124–130', '76', '106'],
+                        ['6XL (60-62)', '144–152', '140–150', '130–136', '78', '108']
+                    ]
+                }
             }
         };
+
+        const heightWeightChart = {
+            headers: ['Ріст / Вага', '55кг', '58кг', '61кг', '64кг', '67кг', '70кг', '73кг', '76кг', '79кг', '82кг', '85кг', '88кг', '91кг', '94кг', '97кг', '>105кг', '>115кг', '>125кг', '>135кг', '>145кг'],
+            rows: [
+                ['165 см', 'S', 'S', 'S', 'M', 'M', 'L', 'L', 'L', 'XL', 'XL', '2XL', '2XL', '3XL', '4XL', '4XL', '/', '/', '/', '/', '/'],
+                ['170 см', 'S', 'S', 'S', 'S', 'M', 'M', 'M', 'L', 'XL', 'XL', '2XL', '2XL', '3XL', '3XL', '3XL', '4XL', '/', '/', '/', '/'],
+                ['175 см', 'S', 'S', 'S', 'S', 'S', 'M', 'M', 'L', 'L', 'L', 'XL', '2XL', '2XL', '2XL', '3XL', '3XL', '4XL', '5XL', '6XL', '7XL'],
+                ['180 см', 'S', 'S', 'S', 'S', 'S', 'M', 'M', 'M', 'L', 'L', 'XL', 'XL', '2XL', '2XL', '2XL', '3XL', '4XL', '5XL', '6XL', '7XL'],
+                ['185 см', 'S', 'S', 'S', 'S', 'M', 'M', 'M', 'M', 'L', 'L', 'XL', 'XL', '2XL', '2XL', '2XL', '3XL', '4XL', '5XL', '6XL', '7XL'],
+                ['190 см', '/', '/', 'M', 'M', 'M', 'M', 'M', 'M', 'L', 'L', 'XL', 'XL', '2XL', '2XL', '2XL', '3XL', '4XL', '5XL', '6XL', '7XL'],
+                ['195 см', '/', '/', '/', 'M', 'M', 'M', 'M', 'L', 'L', 'XL', 'XL', 'XL', '2XL', '2XL', '2XL', '3XL', '4XL', '5XL', '6XL', '7XL']
+            ]
+        };
+
+        const reviewsList = [
+            { name: 'Олена К.', text: 'Найкраще що купувала! Село ідеально, тепло тримає на всі 100%, навіть в сильний мороз на вулиці не мерзну.' },
+            { name: 'Андрій М.', text: 'Якість супер, брав для роботи на відкритому повітрі. Дуже м\'якенька і комфортна білизна.' },
+            { name: 'Світлана П.', text: 'Замовляла собі і чоловіку. Розмір підійшов ідеально по таблиці, приємна до тіла і зовсім не продувається.' },
+            { name: 'Іван Д.', text: 'Брав на рибалку взимку — це просто знахідка. Сидить як влита, рухів не сковує і реально гаряче в ній.' },
+            { name: 'Марія Т.', text: 'Чудова термобілизна! Добре тягнеться, після прання не сіла і ковтунцями не взялася. Рекомендую!' }
+        ];
+
+        let currentActiveModalProduct = null;
+        let currentModalTab = 'volumes';
+        const state = {};
 
         function initShop() {
             const container = document.getElementById('products-container');
             container.innerHTML = '';
 
             products.forEach(prod => {
-                state[prod.id] = { gender: 'male', size: prod.sizes.male[0] };
+                state[prod.id] = { gender: 'male', size: prod.sizes.male[0], height: '', weight: '' };
+
+                let reviewsHtml = '';
+                reviewsList.forEach(rev => {
+                    reviewsHtml += `
+                        <div class="review-card">
+                            <div class="review-header">
+                                <span>${rev.name}</span>
+                                <span class="review-stars">★★★★★</span>
+                            </div>
+                            <div class="review-text">${rev.text}</div>
+                        </div>
+                    `;
+                });
 
                 const card = document.createElement('div');
                 card.className = 'product-card';
@@ -520,6 +675,19 @@
                             <button class="size-guide-btn" onclick="openSizeModal('${prod.id}')">📐 Розмірна сітка</button>
                         </div>
                         <div class="sizes-grid" id="sizes-${prod.id}"></div>
+
+                        <div class="hw-inputs-container" id="hw-box-${prod.id}">
+                            <div class="section-title" style="margin-bottom: 5px; color: var(--accent-blue);">Вкажіть для точності:</div>
+                            <div class="hw-inputs-row">
+                                <input type="text" id="user-height-${prod.id}" placeholder="Зріст (напр. 180 см)" oninput="updateHW('${prod.id}')">
+                                <input type="text" id="user-weight-${prod.id}" placeholder="Вага (напр. 80 кг)" oninput="updateHW('${prod.id}')">
+                            </div>
+                        </div>
+
+                        <div class="reviews-section">
+                            <div class="reviews-title">💬 Відгуки покупців (4.8 / 5)</div>
+                            ${reviewsHtml}
+                        </div>
 
                         <div class="price-row">
                             <div class="price">Ціна: <span id="price-${prod.id}">${prod.prices.male}</span> грн</div>
@@ -567,6 +735,11 @@
             updateSizesAndPrice(prodId);
         }
 
+        function updateHW(prodId) {
+            state[prodId].height = document.getElementById(`user-height-${prodId}`).value;
+            state[prodId].weight = document.getElementById(`user-weight-${prodId}`).value;
+        }
+
         function updateSizesAndPrice(prodId) {
             const prod = products.find(p => p.id === prodId);
             const currentGender = state[prodId].gender;
@@ -585,24 +758,72 @@
         }
 
         function openSizeModal(prodId) {
-            const currentGender = state[prodId].gender;
-            const chart = sizeCharts[currentGender];
-            
-            document.getElementById('modalSizeTitle').innerText = chart.title;
-            
-            let html = `<table class="size-table"><thead><tr>`;
-            chart.headers.forEach(h => html += `<th>${h}</th>`);
-            html += `</tr></thead><tbody>`;
-            
-            chart.rows.forEach(row => {
-                html += `<tr>`;
-                row.forEach(cell => html += `<td>${cell}</td>`);
-                html += `</tr>`;
-            });
-            html += `</tbody></table>`;
-            
-            document.getElementById('modalSizeTableContainer').innerHTML = html;
+            currentActiveModalProduct = prodId;
+            currentModalTab = 'volumes';
+            updateModalView();
             document.getElementById('sizeModal').style.display = 'flex';
+        }
+
+        function switchModalTab(tabName) {
+            currentModalTab = tabName;
+            updateModalView();
+
+            if (currentActiveModalProduct) {
+                const hwBox = document.getElementById(`hw-box-${currentActiveModalProduct}`);
+                if (tabName === 'heightWeight') {
+                    hwBox.classList.add('active');
+                } else {
+                    hwBox.classList.remove('active');
+                }
+            }
+        }
+
+        function updateModalView() {
+            const tab1 = document.getElementById('tabBtn1');
+            const tab2 = document.getElementById('tabBtn2');
+            const titleEl = document.getElementById('modalSizeTitle');
+            const tableContainer = document.getElementById('modalTableContainer');
+            const noteEl = document.getElementById('modalFooterNote');
+
+            if (currentModalTab === 'volumes') {
+                tab1.classList.add('active');
+                tab2.classList.remove('active');
+
+                const currentGender = state[currentActiveModalProduct].gender;
+                const chart = sizeCharts[currentGender];
+                titleEl.innerText = chart.title;
+
+                let html = `<table class="size-table"><thead><tr>`;
+                chart.volumes.headers.forEach(h => html += `<th>${h}</th>`);
+                html += `</tr></thead><tbody>`;
+
+                chart.volumes.rows.forEach(row => {
+                    html += `<tr>`;
+                    row.forEach(cell => html += `<td>${cell}</td>`);
+                    html += `</tr>`;
+                });
+                html += `</tbody></table>`;
+                tableContainer.innerHTML = html;
+                noteEl.innerText = '* Допустима похибка у вимірах ±1-2 см. Матеріал еластичний та добре тягнеться.';
+            } else {
+                tab2.classList.add('active');
+                tab1.classList.remove('active');
+
+                titleEl.innerText = 'Співвідношення зросту та ваги';
+
+                let html = `<table class="size-table" style="font-size: 9px;"><thead><tr>`;
+                heightWeightChart.headers.forEach(h => html += `<th>${h}</th>`);
+                html += `</tr></thead><tbody>`;
+
+                heightWeightChart.rows.forEach(row => {
+                    html += `<tr>`;
+                    row.forEach(cell => html += `<td>${cell}</td>`);
+                    html += `</tr>`;
+                });
+                html += `</tbody></table>`;
+                tableContainer.innerHTML = html;
+                noteEl.innerText = '* Якщо розмір йде на перетині параметрів, то краще обрати більший для повного комфорту. Це орієнтовна сітка.';
+            }
         }
 
         function closeSizeModal() {
@@ -629,13 +850,22 @@
             const sizeText = state[prodId].size;
             const currentPrice = prod.prices[state[prodId].gender];
 
+            let hwInfo = '';
+            const hVal = state[prodId].height;
+            const wVal = state[prodId].weight;
+            if (hVal || wVal) {
+                hwInfo = `\n📐 Параметри зросту/ваги:\n` +
+                         (hVal ? `• Зріст: ${hVal}\n` : '') +
+                         (wVal ? `• Вага: ${wVal}\n` : '');
+            }
+
             const token = "8420401787:AAHgqoM8GWezAJd6T20RWsgYNtKPvMhR1d8";
             const chatId = "7260850439";
 
             const message = `❄️ Нове замовлення у FOUR MAN!\n\n` +
                             `📦 Товар: ${prod.name}\n` +
                             `👤 Стать: ${genderText}\n` +
-                            `📏 Розмір: ${sizeText}\n` +
+                            `📏 Розмір: ${sizeText}` + hwInfo + `\n` +
                             `💰 Ціна: ${currentPrice} грн\n\n` +
                             `📋 Дані клієнта:\n` +
                             `• ПІБ: ${clientName}\n` +
@@ -649,8 +879,21 @@
             fetch(url)
                 .then(response => {
                     if (response.ok) {
+                        // Отправка события в TikTok Pixel (CompletePayment)
+                        if (typeof ttq !== 'undefined') {
+                            ttq.track('CompletePayment', {
+                                content_name: prod.name,
+                                quantity: 1,
+                                price: currentPrice,
+                                currency: 'UAH'
+                            });
+                        }
+
                         document.getElementById('successModal').style.display = 'flex';
                         event.target.reset();
+                        state[prodId].height = '';
+                        state[prodId].weight = '';
+                        document.getElementById(`hw-box-${prodId}`).classList.remove('active');
                     } else {
                         alert('Помилка при відправці замовлення. Спробуйте ще раз.');
                     }
