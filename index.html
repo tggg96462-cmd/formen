@@ -172,6 +172,19 @@
             margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .size-guide-btn {
+            background: none;
+            border: none;
+            color: var(--accent-blue);
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            text-decoration: underline;
         }
 
         .options-group {
@@ -212,7 +225,7 @@
             background-color: #162032;
             border: 1px solid var(--border-color);
             color: white;
-            padding: 8px 14px;
+            padding: 8px 12px;
             border-radius: 8px;
             cursor: pointer;
             font-size: 13px;
@@ -314,7 +327,7 @@
             transform: translateY(-1px);
         }
 
-        /* Модальное окно успешного заказа */
+        /* Модальные окна */
         .modal {
             display: none;
             position: fixed;
@@ -324,21 +337,44 @@
             justify-content: center;
             z-index: 1000;
             backdrop-filter: blur(5px);
+            padding: 15px;
         }
         .modal-content {
             background: var(--card-bg);
-            padding: 30px;
+            padding: 25px;
             border-radius: 14px;
             text-align: center;
-            max-width: 400px;
-            width: 90%;
+            max-width: 500px;
+            width: 100%;
             border: 1px solid var(--border-color);
+            max-height: 90vh;
+            overflow-y: auto;
         }
-        .modal-content h3 { color: #00d2ff; margin-bottom: 10px; font-size: 22px; }
+        .modal-content h3 { color: #00d2ff; margin-bottom: 15px; font-size: 20px; }
         .modal-content p { color: var(--text-muted); margin-bottom: 20px; font-size: 14px; }
         .modal-btn {
             background: var(--accent-blue); color: black; border: none; padding: 10px 25px;
-            font-weight: bold; border-radius: 8px; cursor: pointer;
+            font-weight: bold; border-radius: 8px; cursor: pointer; margin-top: 15px;
+        }
+
+        /* Таблица размерной сетки */
+        .size-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .size-table th, .size-table td {
+            border: 1px solid var(--border-color);
+            padding: 6px 4px;
+        }
+        .size-table th {
+            background-color: #162032;
+            color: var(--accent-blue);
+        }
+        .size-table td {
+            color: var(--text-main);
         }
     </style>
 </head>
@@ -354,11 +390,21 @@
     </div>
 
     <div class="promo-banner">
-        ❄️ СЕЗОННИЙ РОЗПРОДАЖ: ЗАХИСТ ДО -30°C ❄️
+        ❄️️ СЕЗОННИЙ РОЗПРОДАЖ: ЗАХИСТ ДО -30°C ❄️
     </div>
 
     <div class="container" id="products-container">
         <!-- Товары генерируются через JS -->
+    </div>
+
+    <!-- Модалка размерной сетки -->
+    <div class="modal" id="sizeModal">
+        <div class="modal-content">
+            <h3 id="modalSizeTitle">Розмірна сітка</h3>
+            <div id="modalSizeTableContainer"></div>
+            <p style="font-size: 11px; margin-top: 10px; color: var(--text-muted);">* Допустима похибка у вимірах ±1-2 см. Матеріал еластичний та добре тягнеться.</p>
+            <button class="modal-btn" onclick="closeSizeModal()">Закрити</button>
+        </div>
     </div>
 
     <!-- Модалка успешного заказа -->
@@ -382,8 +428,8 @@
                 },
                 prices: { male: 999, female: 959 },
                 sizes: {
-                    male: ['XS', 'S', 'M', 'L', 'XL', '2XL'],
-                    female: ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL']
+                    male: ['S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL', '6XL'],
+                    female: ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL', '6XL']
                 }
             },
             {
@@ -396,13 +442,48 @@
                 },
                 prices: { male: 989, female: 959 },
                 sizes: {
-                    male: ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL'],
-                    female: ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL']
+                    male: ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL', '6XL'],
+                    female: ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL', '6XL']
                 }
             }
         ];
 
         const state = {};
+
+        // Данные таблиц размеров (по твоим картинкам)
+        const sizeCharts = {
+            female: {
+                title: 'Розмірна сітка — Жіноча',
+                headers: ['Розмір', 'Груди, см', 'Талія, см', 'Стегна, см', 'Довж. кофти', 'Довж. штанів'],
+                rows: [
+                    ['XS (42-44)', '82–86', '66–70', '90–94', '60', '92'],
+                    ['S (44-46)', '86–90', '70–74', '94–98', '61', '94'],
+                    ['M (46-48)', '90–94', '74–78', '98–102', '62', '96'],
+                    ['L (48-50)', '94–98', '78–82', '102–106', '63', '98'],
+                    ['XL (50-52)', '98–102', '82–86', '106–110', '64', '100'],
+                    ['2XL (52-54)', '102–106', '86–90', '110–114', '65', '102'],
+                    ['3XL (54-56)', '106–110', '90–94', '114–120', '66', '104'],
+                    ['4XL (56-58)', '110–116', '94–98', '120–126', '67', '106'],
+                    ['5XL (58-60)', '116–122', '98–102', '126–132', '68', '108'],
+                    ['6XL (60-62)', '122–128', '102–106', '132–138', '69', '110']
+                ]
+            },
+            male: {
+                title: 'Розмірна сітка — Чоловіча',
+                headers: ['Розмір', 'Груди, см', 'Талія, см', 'Стегна, см', 'Довж. кофти', 'Довж. штанів'],
+                rows: [
+                    ['S (44-46)', '58–70', '60–70', '70–80', '68', '97'],
+                    ['M (46-48)', '70–78', '70–80', '80–90', '69', '98'],
+                    ['L (48-50)', '88–100', '80–92', '90–98', '70', '100'],
+                    ['XL (50-52)', '100–112', '92–100', '98–106', '71', '101'],
+                    ['2XL (52-54)', '112–120', '100–110', '106–112', '72', '102'],
+                    ['3XL (54-56)', '120–128', '110–120', '112–118', '73', '103'],
+                    ['4XL (56-58)', '128–136', '120–130', '118–124', '74', '104'],
+                    ['5XL (58-60)', '136–144', '130–140', '124–130', '76', '106'],
+                    ['6XL (60-62)', '144–152', '140–150', '130–136', '78', '108']
+                ]
+            }
+        };
 
         function initShop() {
             const container = document.getElementById('products-container');
@@ -434,7 +515,10 @@
                             <div class="option-btn" onclick="setGender('${prod.id}', 'female')">Жіночий</div>
                         </div>
 
-                        <div class="section-title">Оберіть розмір:</div>
+                        <div class="section-title">
+                            <span>Оберіть розмір:</span>
+                            <button class="size-guide-btn" onclick="openSizeModal('${prod.id}')">📐 Розмірна сітка</button>
+                        </div>
                         <div class="sizes-grid" id="sizes-${prod.id}"></div>
 
                         <div class="price-row">
@@ -472,7 +556,6 @@
             const prod = products.find(p => p.id === prodId);
             state[prodId].size = prod.sizes[gender][0];
 
-            // Меняем картинку в зависимости от пола
             const imgElement = document.getElementById(`product-img-${prodId}`);
             imgElement.src = prod.images[gender];
 
@@ -499,6 +582,31 @@
             });
 
             document.getElementById(`price-${prodId}`).innerText = prod.prices[currentGender];
+        }
+
+        function openSizeModal(prodId) {
+            const currentGender = state[prodId].gender;
+            const chart = sizeCharts[currentGender];
+            
+            document.getElementById('modalSizeTitle').innerText = chart.title;
+            
+            let html = `<table class="size-table"><thead><tr>`;
+            chart.headers.forEach(h => html += `<th>${h}</th>`);
+            html += `</tr></thead><tbody>`;
+            
+            chart.rows.forEach(row => {
+                html += `<tr>`;
+                row.forEach(cell => html += `<td>${cell}</td>`);
+                html += `</tr>`;
+            });
+            html += `</tbody></table>`;
+            
+            document.getElementById('modalSizeTableContainer').innerHTML = html;
+            document.getElementById('sizeModal').style.display = 'flex';
+        }
+
+        function closeSizeModal() {
+            document.getElementById('sizeModal').style.display = 'none';
         }
 
         function submitOrder(event, prodId) {
