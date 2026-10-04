@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Four Man — Термобілизна для екстремальних холодів</title>
+    <style>
+        :root {
+            --bg-color: #070b12;
+            --card-bg: #101622;
+            --accent-blue: #00d2ff;
+            --accent-glow: rgba(0, 210, 255, 0.2);
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding-bottom: 50px;
+            background-image: radial-gradient(circle at 50% 0%, #111e38 0%, var(--bg-color) 70%);
+        }
+
+        header {
+            text-align: center;
+            padding: 25px 15px;
+            background: rgba(7, 11, 18, 0.9);
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-blue);
+            text-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .winter-hero {
+            text-align: center;
+            padding: 30px 15px 15px;
+        }
+
+        .winter-hero h1 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .winter-hero p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .promo-banner {
+            background: linear-gradient(90deg, #0072ff, #00d2ff);
+            color: #000;
+            text-align: center;
+            padding: 12px;
+            font-weight: 900;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 15px 0 25px;
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 400px;
+            background-color: #0d131f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 14px;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .badge-winter {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, #00d2ff, #0056b3);
+            color: white;
+            padding: 6px 12px;
+            font-weight: bold;
+            font-size: 13px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
+        .product-content {
+            padding: 22px;
+        }
+
+        .product-title {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .product-desc {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .features-list {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .feature-tag {
+            background-color: rgba(0, 210, 255, 0.1);
+            color: var(--accent-blue);
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+        }
+
+        .section-title {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .options-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .option-btn {
+            flex: 1;
+            background-color: #162032;
+            border: 1px solid var(--border-color);
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .option-btn.active {
+            background-color: var(--accent-blue);
+            color: #000;
+            border-color: var(--accent-blue);
+            font-weight: 700;
+        }
+
+        .sizes-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .size-btn {
+            background-color: #162032;
+            border: 1px solid var(--border-color);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .size-btn.active {
+            background-color: white;
+            color: black;
+            border-color: white;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: 900;
+            color: white;
+        }
+
+        .price span {
+            color: var(--accent-blue);
+        }
+
+        .order-form input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: #162032;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: white;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .order-form input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .phone-input-wrapper {
+            display: flex;
+            align-items: center;
+            background-color: #162032;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .phone-prefix {
+            padding: 12px 10px;
+            background-color: #1e293b;
+            color: var(--text-muted);
+            font-size: 15px;
+            font-weight: bold;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .phone-input-wrapper input {
+            border: none;
+            margin-bottom: 0;
+            background: transparent;
+        }
+
+        .phone-hint {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: -5px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(90deg, #0072ff, #00d2ff);
+            color: #000;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 900;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.2s;
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .submit-btn:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+        }
+
+        /* Модальное окно успешного заказа */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 14px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            border: 1px solid var(--border-color);
+        }
+        .modal-content h3 { color: #00d2ff; margin-bottom: 10px; font-size: 22px; }
+        .modal-content p { color: var(--text-muted); margin-bottom: 20px; font-size: 14px; }
+        .modal-btn {
+            background: var(--accent-blue); color: black; border: none; padding: 10px 25px;
+            font-weight: bold; border-radius: 8px; cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">FOUR MAN <span>STORE</span></div>
+    </header>
+
+    <div class="winter-hero">
+        <h1>Зимова екіпіровка</h1>
+        <p>Максимальне збереження тепла в суворих умовах</p>
+    </div>
+
+    <div class="promo-banner">
+        ❄️ СЕЗОННИЙ РОЗПРОДАЖ: ЗАХИСТ ДО -30°C ❄️
+    </div>
+
+    <div class="container" id="products-container">
+        <!-- Товары генерируются через JS -->
+    </div>
+
+    <!-- Модалка успешного заказа -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <h3>Дякуємо за замовлення!</h3>
+            <p>Менеджер магазину Four Man зв'яжеться з вами найближчим часом.</p>
+            <button class="modal-btn" onclick="closeModal()">Зрозуміло</button>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            {
+                id: 'anatomic',
+                name: 'Термобілизна Anatomic',
+                desc: 'Професійний захист від пронизливого вітру та морозу. Ідеально сидить по фігурі, не сковує рухів.',
+                images: {
+                    male: 'https://i.postimg.cc/5tmQ2d0V/IMG-4200.jpg',
+                    female: 'https://i.postimg.cc/GpRsRhcm/IMG-4202.webp'
+                },
+                prices: { male: 999, female: 959 },
+                sizes: {
+                    male: ['XS', 'S', 'M', 'L', 'XL', '2XL'],
+                    female: ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL']
+                }
+            },
+            {
+                id: 'ecotherm',
+                name: 'Термобілизна EcoTherm',
+                desc: 'Утеплена серія для екстремальних температур. Зберігає природне тепло тіла навіть при -30°C.',
+                images: {
+                    male: 'https://i.postimg.cc/MGYfp2Tw/IMG-4201.jpg',
+                    female: 'https://i.postimg.cc/pdvnvX2P/IMG-4203.webp'
+                },
+                prices: { male: 989, female: 959 },
+                sizes: {
+                    male: ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+                    female: ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL']
+                }
+            }
+        ];
+
+        const state = {};
+
+        function initShop() {
+            const container = document.getElementById('products-container');
+            container.innerHTML = '';
+
+            products.forEach(prod => {
+                state[prod.id] = { gender: 'male', size: prod.sizes.male[0] };
+
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-image" id="img-container-${prod.id}">
+                        <div class="badge-winter">❄️ До -30°C</div>
+                        <img src="${prod.images.male}" alt="${prod.name}" id="product-img-${prod.id}">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-title">${prod.name}</div>
+                        <div class="product-desc">${prod.desc}</div>
+
+                        <div class="features-list">
+                            <span class="feature-tag">🧊 Зберігає тепло</span>
+                            <span class="feature-tag">💨 Вітрозахист</span>
+                            <span class="feature-tag">🛡️ Дихаюча тканина</span>
+                        </div>
+
+                        <div class="section-title">Оберіть стать:</div>
+                        <div class="options-group" id="gender-${prod.id}">
+                            <div class="option-btn active" onclick="setGender('${prod.id}', 'male')">Чоловічий</div>
+                            <div class="option-btn" onclick="setGender('${prod.id}', 'female')">Жіночий</div>
+                        </div>
+
+                        <div class="section-title">Оберіть розмір:</div>
+                        <div class="sizes-grid" id="sizes-${prod.id}"></div>
+
+                        <div class="price-row">
+                            <div class="price">Ціна: <span id="price-${prod.id}">${prod.prices.male}</span> грн</div>
+                        </div>
+
+                        <form class="order-form" onsubmit="submitOrder(event, '${prod.id}')">
+                            <input type="text" id="fullname-${prod.id}" placeholder="ПІБ (Прізвище Ім'я По батькові)" required>
+                            
+                            <div class="phone-input-wrapper">
+                                <span class="phone-prefix">+380</span>
+                                <input type="tel" id="phone-${prod.id}" placeholder="991234567" maxlength="9" oninput="this.value = this.value.replace(/\\D/g, '')" required>
+                            </div>
+                            <span class="phone-hint">Введіть 9 цифр номера (напр. 671234567)</span>
+
+                            <input type="text" id="region-${prod.id}" placeholder="Область (напр. Київська)" required>
+                            <input type="text" id="city-${prod.id}" placeholder="Населений пункт (Місто / Село)" required>
+                            <input type="text" id="branch-${prod.id}" placeholder="№ відділення Нової Почти" required>
+
+                            <button type="submit" class="submit-btn">Оформити замовлення</button>
+                        </form>
+                    </div>
+                `;
+                container.appendChild(card);
+                updateSizesAndPrice(prod.id);
+            });
+        }
+
+        function setGender(prodId, gender) {
+            state[prodId].gender = gender;
+            const genderGroup = document.getElementById(`gender-${prodId}`);
+            genderGroup.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const prod = products.find(p => p.id === prodId);
+            state[prodId].size = prod.sizes[gender][0];
+
+            // Меняем картинку в зависимости от пола
+            const imgElement = document.getElementById(`product-img-${prodId}`);
+            imgElement.src = prod.images[gender];
+
+            updateSizesAndPrice(prodId);
+        }
+
+        function setSize(prodId, size) {
+            state[prodId].size = size;
+            updateSizesAndPrice(prodId);
+        }
+
+        function updateSizesAndPrice(prodId) {
+            const prod = products.find(p => p.id === prodId);
+            const currentGender = state[prodId].gender;
+
+            const sizesContainer = document.getElementById(`sizes-${prodId}`);
+            sizesContainer.innerHTML = '';
+            prod.sizes[currentGender].forEach(sz => {
+                const sBtn = document.createElement('div');
+                sBtn.className = `size-btn ${state[prodId].size === sz ? 'active' : ''}`;
+                sBtn.innerText = sz;
+                sBtn.onclick = () => setSize(prodId, sz);
+                sizesContainer.appendChild(sBtn);
+            });
+
+            document.getElementById(`price-${prodId}`).innerText = prod.prices[currentGender];
+        }
+
+        function submitOrder(event, prodId) {
+            event.preventDefault();
+
+            const prod = products.find(p => p.id === prodId);
+            const clientName = document.getElementById(`fullname-${prodId}`).value;
+            const phoneDigits = document.getElementById(`phone-${prodId}`).value;
+            const region = document.getElementById(`region-${prodId}`).value;
+            const city = document.getElementById(`city-${prodId}`).value;
+            const branch = document.getElementById(`branch-${prodId}`).value;
+
+            if (phoneDigits.length !== 9) {
+                alert('Будь ласка, введіть коректний номер телефону (робочих 9 цифр після +380).');
+                return;
+            }
+
+            const clientPhone = '+380' + phoneDigits;
+            const genderText = state[prodId].gender === 'male' ? 'Чоловічий' : 'Жіночий';
+            const sizeText = state[prodId].size;
+            const currentPrice = prod.prices[state[prodId].gender];
+
+            const token = "8420401787:AAHgqoM8GWezAJd6T20RWsgYNtKPvMhR1d8";
+            const chatId = "7260850439";
+
+            const message = `❄️ Нове замовлення у FOUR MAN!\n\n` +
+                            `📦 Товар: ${prod.name}\n` +
+                            `👤 Стать: ${genderText}\n` +
+                            `📏 Розмір: ${sizeText}\n` +
+                            `💰 Ціна: ${currentPrice} грн\n\n` +
+                            `📋 Дані клієнта:\n` +
+                            `• ПІБ: ${clientName}\n` +
+                            `• Телефон: ${clientPhone}\n` +
+                            `• Область: ${region}\n` +
+                            `• Місто: ${city}\n` +
+                            `• Відділення НП: ${branch}`;
+
+            const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+            fetch(url)
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById('successModal').style.display = 'flex';
+                        event.target.reset();
+                    } else {
+                        alert('Помилка при відправці замовлення. Спробуйте ще раз.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Сталася помилка мережі.');
+                });
+        }
+
+        function closeModal() {
+            document.getElementById('successModal').style.display = 'none';
+        }
+
+        window.onload = initShop;
+    </script>
+</body>
+</html>
